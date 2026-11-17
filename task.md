@@ -41,3 +41,22 @@ Verification: build and lint passed (0 lint warnings/errors). Desktop/mobile scr
 - [ ] Build/lint and verify all chapters, reverse scroll, cancellation, mobile touch and entry/exit
 - [ ] Deliver updated website
 Only scroll-story and a new use-chapter-snap hook change. Hero orbit, shared school model, camera choreography and parent phone remain unchanged.
+
+## Approved revision — three audience AI chapters
+- [x] Re-read live okuldas.com/tr AI section; user selected three grouped audience chapters
+- [x] Copy all 11 feature titles/descriptions verbatim; preserve exact introduction
+- [x] Build new scroll-bound storybook/approval, teacher workflow board and management analytics scenes
+- [x] Add desktop feature groups, mobile expandable descriptions and reduced-motion reading layout
+- [x] Reuse chapter-idle snap with a configurable three-pose array
+- [x] Build/lint and verify 3D scenes, exact source copy, desktop/mobile, snap and reduced motion
+- [x] Deliver updated website
+Verification: all 11 titles and descriptions match the live source verbatim. Desktop and mobile audience anchors snap with the stage pinned at top=0; all 11 mobile descriptions can be expanded, including at 360×640. Reduced motion shows all 11 paragraphs with snapping disabled. Input interruption and the original five-chapter snapping were tested; reversible AI rendering produced mean pixel difference 0.0. After the final scene-layout patch, build and lint pass with 0 lint warnings/errors; family and management screenshots inspected, no runtime errors or horizontal overflow. Original school-world, scroll-world and scroll-phone hashes remain unchanged.
+
+## Approved comparison — futuristic AI experience
+- [x] User selected light futuristic processor, data ribbons and holographic outputs
+- [x] Document direction; retain original experience and shared exact feature data
+- [x] Add independent second section and new three-chapter technology geometry
+- [x] Verify desktop/mobile, duplicate IDs, identical copy, independent snapping, reduced motion and preserved original files
+- [x] Build/lint
+- [ ] Deliver both versions on one page
+Verification: 11 identical feature titles/bodies in both versions, no duplicate DOM IDs. Desktop all three anchors pinned at top=0 with no runtime errors or overflow. Mobile 390×844 and 360×640 all 11 descriptions expand; original section independently snaps at .50. Final narrow-screen navigation moved above platform badge: all three rail buttons and all 11 toggles verified at 360×640, tag remains above navigation. Final 390px family/teacher controls verified; the redundant final management/reduced rerun exceeded its test time limit, while the earlier complete 390px and reduced-motion checks passed. Reduced motion earlier verified all 11 paragraphs visible, no snap state and no overflow. Reversible tech-world rendering at .50 is pixel-identical (mean difference 0.0). Comparison link returns to original anchor with the existing 100px header offset. Original AI component, geometry and stylesheet hashes unchanged. Final build/lint pass, 0 lint warnings/errors. New WebGL scene mounts only near its section. Production bundler retains existing large-chunk/template deprecation warnings.

@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, type RefObject } from 'react';
 export const chapterPoses = [.16, .34, .50, .70, .96];
 const idleDelay = 240;
 
-export function useChapterSnap(section: RefObject<HTMLElement | null>, reduced: boolean) {
+export function useChapterSnap(section: RefObject<HTMLElement | null>, reduced: boolean, poses: readonly number[] = chapterPoses) {
   const navigate = useRef<(index: number) => void>(() => {});
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export function useChapterSnap(section: RefObject<HTMLElement | null>, reduced: 
       const { start, length } = bounds();
       if (length <= 0) return;
       const from = window.scrollY;
-      const to = start + length * chapterPoses[index]!;
+      const to = start + length * poses[index]!;
       element.dataset.snapChapter = String(index);
       if (Math.abs(to - from) < 2) { element.dataset.snapState = 'snapped'; return; }
       element.dataset.snapState = 'settling';
@@ -56,8 +56,8 @@ export function useChapterSnap(section: RefObject<HTMLElement | null>, reduced: 
       if (length <= 0) return;
       const p = (window.scrollY - start) / length;
       // Entry and exit remain normal page scrolling, including slow scroll gestures.
-      if (p < 0 || p > 1 || (direction < 0 && p < chapterPoses[0]!) || (direction > 0 && p > chapterPoses[4]! + .002)) return;
-      const nearest = chapterPoses.reduce((best, value, index) => Math.abs(value - p) < Math.abs(chapterPoses[best]! - p) ? index : best, 0);
+      if (p < 0 || p > 1 || (direction < 0 && p < poses[0]!) || (direction > 0 && p > poses[poses.length - 1]! + .002)) return;
+      const nearest = poses.reduce((best, value, index) => Math.abs(value - p) < Math.abs(poses[best]! - p) ? index : best, 0);
       settle(nearest);
     };
     const queue = () => {
@@ -73,7 +73,7 @@ export function useChapterSnap(section: RefObject<HTMLElement | null>, reduced: 
       if (element.dataset.snapState === 'snapped') {
         const { start, length } = bounds();
         const index = Number(element.dataset.snapChapter);
-        if (Math.abs(y - (start + length * chapterPoses[index]!)) < 2) return;
+        if (Math.abs(y - (start + length * poses[index]!)) < 2) return;
       }
       element.dataset.snapState = 'scrubbing';
       queue();
@@ -110,7 +110,7 @@ export function useChapterSnap(section: RefObject<HTMLElement | null>, reduced: 
       window.removeEventListener('resize', onResize);
       delete element.dataset.snapState; delete element.dataset.snapChapter;
     };
-  }, [section, reduced]);
+  }, [section, reduced, poses]);
 
   return useCallback((index: number) => navigate.current(index), []);
 }

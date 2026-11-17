@@ -2,6 +2,8 @@
 @import "tw-animate-css";
 @import "./scroll.css";
 @import "./lotus.css";
+@import "./ai-story.css";
+@import "./ai-tech-story.css";
 
 @custom-variant dark (&:is(.dark *));
 
